@@ -36,7 +36,7 @@ Deploy as a Web App executing as the deploying account. The endpoint is anonymou
 - Attendance writes are guarded by a script lock.
 - Membership status is calculated server-side: `ACTIVE`, `EXPIRING SOON`, `EXPIRED`.
 - Expiry warning defaults to five days.
-- **Expired-member access policy is intentionally unresolved**: current code flags an expired member but still permits an entry. Confirm the policy before production.
+- **Expired-member access policy**: expired members may be checked in, with a clear expired-membership warning. This is the approved behavior; the receptionist should verify the member and follow gym policy.
 - UI does not poll automatically; refresh/search/actions make requests.
 
 ## Important current limitations to resolve before production
