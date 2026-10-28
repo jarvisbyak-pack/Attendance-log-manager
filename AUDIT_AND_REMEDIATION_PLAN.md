@@ -3,7 +3,7 @@
 **Repository:** `jarvisbyak-pack/Attendance-log-manager`  
 **Audited ref:** `main`  
 **Audit type:** Static source review of the committed frontend and Google Apps Script backend  
-**Status:** Initial source audit complete; live integration and end-to-end tests remain outstanding.  
+**Status:** Initial source audit complete; first remediation pass is on `audit/remediation`; live integration and end-to-end tests remain outstanding.  
 **Safety rule:** This document is a plan only. No production behavior or member data has been changed by this audit.
 
 ## Executive summary
@@ -252,3 +252,9 @@ These cannot safely be decided by code inspection alone:
 **Code fixes: not started.**  
 **Live Apps Script / spreadsheet verification: pending.**  
 **Production deployment: not performed.**
+
+
+## Implementation notes after initial remediation pass
+- Reception no longer uses the admin PIN for ordinary attendance actions; a separate reception PIN creates a time-limited reception session. Admin-only actions remain admin-session protected.
+- This is intentionally not a production release: the anonymously reachable Apps Script endpoint still needs security review, PIN throttling, and test deployment validation.
+- Automated CI checks passed for frontend JavaScript syntax, Apps Script source syntax, manifest JSON, duplicate HTML IDs, and static DOM references. These checks do not validate Google Sheets writes or browser behavior.
