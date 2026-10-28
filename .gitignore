@@ -1,0 +1,11 @@
+# Secrets and local-only files
+.env
+.env.*
+!.env.example
+*.local
+.DS_Store
+Thumbs.db
+node_modules/
+coverage/
+playwright-report/
+STATIC_AUDIT.txt
