@@ -30,4 +30,4 @@ function doPost(e) {
     return jsonOutput_({ success: false, message: String(err && err.message || err) });
   }
 }
-function jsonOutput_(value) { return ContentService.createTextOutput(JSON.stringify(value)).setMimeType(ContentService.MimeType.JSON); }
+function jsonOutput_(data) { return ContentService.createTextOutput(JSON.stringify(data)).setMimeType(ContentService.MimeType.JSON); }
