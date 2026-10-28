@@ -11,7 +11,9 @@ function doPost(e) {
     var action = String(request.action || '');
     if (action === 'health') return jsonOutput_({ success: true, status: 'ok', message: 'Apps Script backend is responding.', time: new Date().toISOString() });
     if (action === 'admin.authenticate') return jsonOutput_(authenticateAdmin_(request.pin));
-    requireAdminSession_(request.sessionToken);
+    if (action === 'reception.authenticate') return jsonOutput_(authenticateReception_(request.pin));
+    if (action === 'admin.notificationSettings') requireAdminSession_(request.sessionToken);
+    else requireReceptionSession_(request.sessionToken);
     var result;
     switch (action) {
       case 'admin.notificationSettings': result = getNotificationSettings_(); break;
